@@ -10,27 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 1. Traer codigo del repositorio
+      - name: 1. Traer codigo del repositorio[span_0](start_span)[span_0](end_span)
         uses: actions/checkout@v4
 
-      - name: 2. Configurar Java 17
+      - name: 2. Configurar Java 17[span_1](start_span)[span_1](end_span)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: 3. Configurar Android SDK
-        uses: android-actions/setup-android@v3
+      - name: 3. Aceptar licencias de Android SDK
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-      - name: 4. Instalar Gradle
+      - name: 4. Instalar Gradle[span_2](start_span)[span_2](end_span)
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.2'
 
-      - name: 5. Compilar la APK
+      - name: 5. Compilar la APK[span_3](start_span)[span_3](end_span)
         run: gradle assembleDebug --no-daemon
 
-      - name: 6. Subir APK lista para descargar
+      - name: 6. Subir APK lista para descargar[span_4](start_span)[span_4](end_span)
         uses: actions/upload-artifact@v4
         with:
           name: CulinaryStudio-APK
